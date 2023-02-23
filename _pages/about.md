@@ -8,11 +8,10 @@ redirect_from:
   - /about.html
 ---
 
-Hi! This is Yitian. 
-
+Hi! Welcome to Yitian's page. 
 I'm a second-year CS master student at ETH Zurich. I got my CS bachelor degree at Shanghai Jiao Tong Univeristy.
 
-I'm mostly insterested in Computer Graphics. I've done several projects on various topics, like physically-based simualtion, offline & real-time rendering, geometry processing and of course games! 
+I'm insterested in Computer Graphics. I've done several projects on various topics, like physically-based simualtion, offline & real-time rendering, geometry processing, and of course game development! 
 
 Check out my projects [here](https://mkochab.github.io/portfolio).
 

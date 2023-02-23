@@ -1,6 +1,6 @@
 ---
-title: "Portfolio item number 2"
-excerpt: "Short description of portfolio item number 2 <br/><img src='/images/500x300.png'>"
+title: "Volumetric Path tracer"
+excerpt: "A volumetric path tracer made for ETH 2022 CG course.<br/><img src='/images/final_image.png' style='max-width: 500px; height: auto;'>"
 collection: portfolio
 ---
 
@@ -11,12 +11,12 @@ collection: portfolio
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Computer Graphics - Project Proposal</title>
+    <!-- <title>Computer Graphics - Project report</title> -->
 
-    <link href="resources/bootstrap.min.css" rel="stylesheet">
-    <link href="resources/offcanvas.css" rel="stylesheet">
-    <link href="resources/custom2014.css" rel="stylesheet">
-    <link href="resources/twentytwenty.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="/resources/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- <link href="/resources/offcanvas.css" rel="stylesheet"> -->
+    <!-- <link href="/resources/custom2014.css" rel="stylesheet"> -->
+    <link href="/resources/twentytwenty.css" rel="stylesheet" type="text/css">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -25,79 +25,194 @@ collection: portfolio
 </head>
 
 <body>
-
-<div class="container headerBar">
-		<h1>Project Proposal - Davide Corigliano, Yitian Ma</h1>
-</div>
-
 <div class="container contentWrapper">
 <div class="pageContent">
 
-	<!-- ================================================================= -->
 
-	<h2>Motivational images </h2>
+	<!-- <h2>Yitian</h2> -->
 
-<p>Our visual library: </p>
+    <h2>"The toys invasion"</h2>
+  <div class="twentytwenty-container">
+    <img src="/images/final_image.png" alt="Final rendering" class="img-responsive">
+  </div> <br>
+
+  <!-- <h3 align="center">There is a bathroom, on the border between a fairy tale and the real world</h3>
+  <i>
+  <p align="center">
+    You step out of the bath and admire the lovely metropolitan skyline. <br>
+    But something is different other than the city light. <br>
+    Look, some cute little ones are joining you for the night. <br>
+    They are traveling on their private flight. <br>
+    Before you notice, there is a cloud drifting in your bathroom, silent, and white. <br>
+    Welcome to the fantasy of tonight.</p>
+  </i> -->
+
+  <h3>This work is among the three "Honorable Mention" prizes in ETH 2022 CG rendering competition.</h3>
+
+    <h2>Feature list</h2>
+
+    <dl>
+        <h3><a href="#image-texture">Images as Textures</a></h3>
+        <h3><a href="#textured-light">Textured Area Emitter</a></h3>
+        <h3> <a href="#procedural-texture">Procedural Textures</a></h3>
+        <h3><a href="#normal-map">Normal Mapping</a></h3>
+        <h3><a href="#volpath">Heterogeneous Volumetric Participating Media</a></h3>
+        <h3><a href="#phase-function"> Anisotropic Phase Function</a></h3>
+        <h3><a href="#procedural-volume"> Procedural Volumes</a></h3>
+    </dl>
+
+
+
+    <h2 id="image-texture">Images as Textures</h2>
+    <p> We have two types of image textures, one for .exr and the other for other common image formats (e.g. png and jpg). Exr format is supported through Nori's bitmap reader.
+      Other common image formats like .png and .jpg are supported by the stb_image library.
+      The two textures implement the eval method with bilinear filtering. For the sRGB color textures, we apply gamma correction to convert the colors
+      to linear space.</p>
+
+    <p>Here is an example of image texture. The original texture:</p>
+    <img src="/images/duck_texture.jpg" alt="Test results" style="width: 50%; height: auto; " />
+    <br>
+    <p>The textured mesh with 512 spp:</p>
+    <div class="twentytwenty-container">
+    <img src="/images/image_texture.png" alt="Results" />
+    </div>
+
+
+    <h2 id="textured-light">Textured Area Emitter</h2>
+    <p>Here is an example of a textured area emitter.</p>
+    <div class="twentytwenty-container">
+    <img src="/images/texture_light.png" alt="Results" />
+  </div><br>
+
+  <p>In Mitsuba, it is not possible to specify the emitter radiance and the emitter texture at the same time. In other words, radiance is decided only by the image value.
+    If we set the radiance in our system to (1, 1, 1), we can make a comparison. (spp = 512)
+  </p>
+  <div class="twentytwenty-container">
+    <img src="/images/texture_light2.png" alt="Mine" class="img-responsive">
+    <img src="/images/textured_light2_ref.png" alt="Mitsuba" class="img-responsive">
+  </div> <br>
+
+
+    <h2 id="procedural-texture">Procedural Textures</h2>
     <p>
-	<img src="images/cloud.PNG" alt="Test results" style="max-width: 25.5%; height: auto;" />
-  <img src="images/bucket.jpeg" alt="Test results" style="max-width: 30%; height: auto;" />
-  <img src="images/pavement.jpeg" alt="Test results" style="max-width: 30%; height: auto;" />
-  <br> <br>
+    For the procedurally generated texture, we choose to implement the marble texture. We used <a href="#references">[1]</a> as a reference.
+      It is based on the classic Perlin noise. To create the pattern of the marble, we use several octaves of Perlin noise to form
+     the fractional Brownian motion.
+     Each time we reduce the weight by multiplying the persistence, doubling the noise frequency, and finally applying a cosine function to it.
+      </p>
+    <h3>Validation</h3>
+     <p>Here is the generated texture (also used as a textured area emitter, spp=512):</p>
+     <div class="twentytwenty-container">
+    <img src="/images/marble.png" alt="Results" />
+  </div><br>
 
-    <p> You are not surprised to see some steam in your bathroom after a nice evening bath. When you look up at the foggy ceiling, it reminds you of the beautiful clouds on a clear night, which are also formed when the warm water vapor meets the cool air.
-        Why can't clouds be formed in the bathroom? Out of place, you may say, but we bet it must look dreamy. And why the toys are flying? Shouldn't they stay inside the bathtub? </p>
 
-	<!-- ================================================================= -->
+    <h2 id="normal-map">Normal mapping</h2>
+    <p>During the querying of the shading frame when setting up the intersection, we use the shape uv to evaluate the normal map.
+      Then the calculated normal is used to create the shading frame instead of using the geometric frame or the mesh normals.
+      We need to compute the tangent and bitangent to create the tangent space coordinates and convert the normal to world space properly.
+    </p>
 
-	<h2>Features</h2>
+    <h3>Validation</h3>
+    <p>The validation is a comparison to Mitsuba's normal map. (spp=512)</p>
+    <div class="twentytwenty-container">
+    <img src="/images/normal.png" alt="Mine" class="img-responsive">
+    <img src="/images/normal_ref.png" alt="Mitsuba" class="img-responsive">
+</div> <br>
 
-    <h3>Davide</h3>
 
-    <dl>
-        <dt>Modeling Meshes (5)</dt>
-        <dd>- E.g. meshes representing toys for our bathtub.</dd>
-        <dt>Simple Denoising: Bilateral Filter with Pixel Variance Estimates (10)</dt>
-        <dd>- To render scenes faster.</dd>
-        <dt>Environment Map Emitter (15)</dt>
-        <dd>- To make our scene visually more pleasing.</dd>
-        <dt>Disney BSDF (15)</dt>
-        <dd>- To represent a wide array of materials for the bathroom and our toys.</dd>
-        <dt>Advanced Camera Model (15)</dt>
-        <dd>- Interesting effects using different parametrizations.</dd>
-    </dl>
+    <h2 id="volpath">Volumetric Participating Media</h2>
+    <p>We have two types of volume, one is a constant volume (homogeneous) and the other is a grid volume (heterogeneous). For each volume, we can
+      specify a volume AABB bounding box, the absorption and scattering coefficients, and the phase function. The volume class
+    should implement two methods: (1) sample the free flight distance and (2) compute the transmittance. The transmittance is computed with
+    ratio tracking, which is similar to the implementation of PBRT v3 <a href="#references">[3]</a></p>
 
-    <h3>Yitian</h3>
+    <h3>Constant volume / Homogeneous</h3>
+    <p>For the homogeneous medium, the absorption and scattering coefficients sigma_a and sigma_s are constant throughout the bounding volume.</p>
 
-    <dl>
-        <dt>Images as Textures (5)</dt>
-        <dd>- For models with image textures.</dd>
-        <dt>Percedual Textures (5)</dt>
-        <dd>- E.g. the noise-based marble texture <a href="#references">[1]</a> as the floor material.</dd>
-        <dt>Percedual Volumes (5)</dt>
-        <dd>- E.g. Perlin-Worley noise <a href="#references">[2]</a>. It can be used to model the shape of clouds.
-        </dd>
-        <dt>Textured Area Emitter(5)</dt>
-        <dd>- To use textured light for the room.</dd>
-        <dt> Bump Mapping or Normal Mapping (5)</dt>
-        <dd>- To add details for the models.</dd>
-        <dt>Anisotropic Phase Function (5)</dt>
-        <dd>- Henyey-Greenstein. Needed in participating media.</dd>
-        <dt>Heterogeneous Volumetric Participating Media (30)</dt>
-        <dd>- To rendering the clouds.</dd>
-    </dl>
+    <h3>Grid volume / Heterogeneous</h3>
+      <p> We can either load from Mitsuba .vol single-channel density file or use the procedurally generated density field.
+        A density grid is created and we evaluate the density for a position using the trilinear interpolation.
+        If the density is procedurally generated, we provide some parameters to tweak the density field. The main difference between the homogeneous
+      and heterogeneous volume is that we consider different extinction coefficients for different volume density.</p>
 
-    <h4 id="references">References</h4>
+    <h3>Volumetric path tracer with MIS</h3>
+    <p>We implement a volumetric path tracer with the MIS technique. When we trace a ray, we sample the free flight distance according to all the scene media
+      to check whether there is an interaction within the medium. If there is an interaction, we start a new ray from the place of interaction which is decided by the free flight distance. Otherwise, we will continue the ray to see if it intersects with the scene or not. </p>
+      <p>To reduce noise, we add light sampling for each medium-interaction/scene-intersection and apply balanced heuristics to compute the MIS weights.
+        For each light sampling, we include the influence of the medium through the transmittance along the shadow ray. The material pdf is from the phase function for a medium interaction, or from BSDF for a surface intersection.</p>
+
+    <h3>Validation</h3>
+    <p>To validate the implementation, we have the results compared to the rendering of Mitsuba 3. The Mitsuba results are rendered with the volumetric path tracer, with a low discrepancy sampler and 1024 spp.</p>
+    <p>Here is the validation of a homogeneous volume (sigma_a = (0, 0, 0), sigma_s = (1, 1, 1), spp = 512):</p>
+    <div class="twentytwenty-container">
+      <img src="/images/vol_s1.png" alt="Mine" class="img-responsive">
+      <img src="/images/s1_ref.png" alt="Mitsuba" class="img-responsive">
+  </div> <br>
+
+  <p> The effect of pure absorption (sigma_a = (1, 1, 1), sigma_s = (0, 0, 0), spp = 512)</p>
+    <div class="twentytwenty-container">
+      <img src="/images/a1.png" alt="Mine" class="img-responsive">
+      <img src="/images/a1_ref.png" alt="Mitsuba" class="img-responsive">
+  </div> <br>
+  <p>Here is an example of more than one volume (sigma_a = (0, 0, 0), sigma_s = (1, 1, 1), spp = 512):</p>
+  <div class="twentytwenty-container">
+    <img src="/images/two_volume.png" alt="Mine" class="img-responsive">
+    <img src="/images/two_volume_ref.png" alt="Mitsuba" class="img-responsive">
+  </div>
+
+  <p>Here is the validation of a heterogeneous volume (sigma_a = (0, 0, 0), sigma_s = (10, 10, 10), spp = 512). The density is loaded from smoke.vol file from <a href="http://mitsuba-renderer.org/download.html">Mitsuba website:</a>.</p>
+  <div class="twentytwenty-container">
+    <img src="/images/het.png" alt="Mine" class="img-responsive">
+    <img src="/images/het_ref.png" alt="Mitsuba" class="img-responsive">
+</div> <br>
+
+
+  <h2 id="phase-function">Anisotropic Phase Function</h2>
+  <p>The files related to this task are include/medium.h, and src/hg_phase.cpp .
+  <br>For the anisotropic phase function, we implement the Henyey-Greenstein phase function. The phase function will be added as a child of a volume.
+    During a medium interaction, we can sample the next ray according to phase function based on the original ray direction.
+    During the light sampling, we can evaluate the pdf based on the ray direction and the direction toward the light.
+  </p>
+  <h3>Validation</h3>
+  <p>Here is an example of HG phase function: (sigma_a = (0, 0, 0), sigma_s = (1, 1, 1), g = 0.7, spp = 512):</p>
+  <div class="twentytwenty-container">
+    <img src="/images/hg.png" alt="Mine" class="img-responsive">
+    <img src="/images/hg_ref.png" alt="Mitsuba" class="img-responsive">
+</div> <br>
+
+    <h2 id="procedural-volume">Procedural Volume</h2>
+    <p>Procedural volume is used to generate the density field of clouds. We choose
+      the Worley noise, a variant of Voronoi noise, which is suitable to generate the base shape and details of clouds. The reference for the implementation
+      is given by <a href="#references">[2]</a>.
+      Again, we use several octaves to generate the fBm noise. We first create a base-shape-noise and use a threshold to keep the high-density part;
+      Then we create a detail-noise with higher frequency components of Worley noise. By subtracting the detail-noise from the base-shape-noise, we get
+      a cloud-density field with good details. To avoid the sudden clamp around the boundaries, we apply attenuation to the density close to the boundaries.
+      </p>
+    <p>
+      Here are some generated density fields (grid resolution = (128, 128, 128), sigma_a = (1, 1, 1), sigma_s = (20, 20, 20), g = 0.1, spp = 512):
+    </p>
+    <div class="twentytwenty-container">
+    <img src="/images/cloud1.png" alt="Results"  />
+  </div> <br>
+    <div class="twentytwenty-container">
+    <img src="/images/cloud2.png" alt="Results" />
+  </div> <br>
+    <h3 id="references">References</h3>
     <p>[1] Texture noise. PBRT Book 3rd. <a href="https://www.pbr-book.org/3ed-2018/Texture/Noise">https://www.pbr-book.org/3ed-2018/Texture/Noise </a></p>
-    <p>[2] Nubis: Authoring Real-Time Volumetric Cloudscapes with the Decima Engine <a href="https://advances.realtimerendering.com/s2017/index.html">https://advances.realtimerendering.com/s2017/index.html/a></p>
+    <p>[2] Nubis: Authoring Real-Time Volumetric Cloudscapes with the Decima Engine <a href="https://advances.realtimerendering.com/s2017/index.html">https://advances.realtimerendering.com/s2017/index.html/</a></p>
+    <p>[3] Volumetric light transport. PBRT Book 3rd. <a href="https://www.pbr-book.org/3ed-2018/Light_Transport_II_Volume_Rendering/Volumetric_Light_Transport">https://www.pbr-book.org/3ed-2018/Light_Transport_II_Volume_Rendering/Volumetric_Light_Transport</a></p>
+
 </div>
 </div>
 
 
 <!-- Bootstrap core JavaScript -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="resources/bootstrap.min.js"></script>
-<script src="resources/jquery.event.move.js"></script>
-<script src="resources/jquery.twentytwenty.js"></script>
+<!-- <script src="/resources/jquery-1.12.4.min.js"></script> -->
+<script src="/resources/bootstrap.min.js"></script>
+<script src="/resources/jquery.event.move.js"></script>
+<script src="/resources/jquery.twentytwenty.js"></script>
 
 
 <script>

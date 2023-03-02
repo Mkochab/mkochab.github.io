@@ -1,0 +1,38 @@
+---
+title: "Real-time volumetric clouds generation and rendering"
+excerpt: "The projects investigates the methods of the generation and 
+rendering of volumetric clouds. <br><br><img src='/images/cloud/em1.png' style='max-width: 300px; height: 180px;'>
+<img src='/images/cloud/em2.png' style='max-width: 300px; height: 180px;'>
+<img src='/images/cloud/em3.png' style='max-width: 300px; height: 180px;'>"
+collection: portfolio
+---
+
+<h2>Cloud generation</h2>
+<h3>Procedurally generated clouds</h3>
+<p>A common method of cloud generation is introduced in <a href="#references">[1]</a> used in Horizon: Zero Dawn  
+    The cloud is procedurally generated using noise.
+</p>
+
+<h3>Physically-base generation</h3>
+The real-time generation of clouds is based on several theoritical models: atmospheric model, fluid dynamics, and the water transition model of the clouds.
+. The implementation is mainly based on <a href="#references">[2]</a> and also adopt a few details from <a href="#references">[3]</a>.
+We can generate the clouds based on the input of heat and vapor emission, a set of control parameters, as well as the terrain information.
+<link href="/resources/twentytwenty.css" rel="stylesheet" type="text/css">
+
+<h2>Cloud rendering</h2>
+<h3>Cloud Shadows</h3>
+    <img src="/images/cloud/shadow1.png"  width="80%">
+    <img src="/images/cloud/shadow2.png" width="80%">
+<br>
+
+<h3>Gods Ray</h3>
+    <img src="/images/cloud/ray2.png" width="80%">
+    <img src="/images/cloud/ray1.png" width="80%">
+<br>
+
+
+<h3 id="references">References</h3>
+<p>[1] Andrew Shneider (Guerrilla Games). Nubis: Authoring Real-Time Volumetric Cloudscapes with the Decima Engine.
+SIGGRAPH Advances in Real-Time Rendering Course, <a href="https://advances.realtimerendering.com/s2017/index.html">https://advances.realtimerendering.com/s2017/index.html. 2017.</a></p>
+<p>[2] Torsten H¨adrich et al. “Stormscapes: Simulating Cloud Dynamics in the Now”. In: vol. 39. Oct. 2020.</p>
+<p>[3] Mark J Harris et al. “Simulation of cloud dynamics on graphics hardware”. In: Proceedings of the ACM SIGGRAPH/EUROGRAPHICS conference on Graphics hardware. 2003, pp. 92–101.</p>

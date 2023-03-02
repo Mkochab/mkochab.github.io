@@ -1,0 +1,154 @@
+---
+title: "Selected Past Course Projects"
+excerpt: "Some of course projects in ETH, covering geometry processing, performance study, physically-based simulation etc.
+<br/>
+<img src='/images/gp/tn.png' style='width: 300px; height: 450px;'>
+<img src='/images/asl/tn.png' style='width: 300px; height: 450px;'>
+<img src='/images/pbs/both.png' style='width: 300px; height: 450px;'>"
+collection: portfolio
+---
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <title>Computer Graphics - Project report</title> -->
+
+    <!-- <link href="/resources/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- <link href="/resources/offcanvas.css" rel="stylesheet"> -->
+    <!-- <link href="/resources/custom2014.css" rel="stylesheet"> -->
+    <link href="/resources/twentytwenty.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+
+<h2>Category</h2>
+<h3><a href="#gp">Geometry Processing</a></h3>
+<h3><a href="#pbs">Simulate Sand as Fluids</a></h3>
+
+<h2 id="#gp">Geometry Processing</h2>
+
+<h3>1. Mesh Subdivision</h3>
+<p>Implemented Sqrt(3) mesh subdivision scheme</p>
+<img align="center"  src="/images/gp/1/plane0.png" width="30%">
+<img align="center"  src="/images/gp/1/plane1.png" width="30%">
+<br>
+<img align="center"  src="/images/gp/1/sphere0.png" width="30%"> 
+<img align="center"  src="/images/gp/1/sphere1.png" width="30%">
+<br>
+<img align="center"  src="/images/gp/1/bump0.png" width="30%"> 
+<img align="center"  src="/images/gp/1/bump1.png" width="30%"> 
+
+<h3>2. Implicit Surface Reconstruction</h3>
+<p>Compute an implicit function using Moving Least Square (MLS) approximating a 3D point cloud with given normals. 
+Sample the implicit function on a 3D volumetric grid and then apply the marching cubes algorithm to extract a triangle mesh of this zero level set.</p>
+<img align="center" src="/images/gp/2/cat2.png" width="30%">
+<img align="center" src="/images/gp/2/cat21.png" width="30%">
+<img align="center" src="/images/gp/2/cat.png" width="30%">
+
+<p>We can tune different parameters to get a better reconstruction, e.g. grid resolution,
+the polynomial degree of fitting, the weighting function used in MLS. </p>
+<img align="center" src="/images/gp/2/horse.png" width="60%">
+<img align="center" src="/images/gp/2/hound.png" width="60%">
+
+<h3>3. Mesh Smoothing</h3>
+<p>Explicit Laplacian Smoothing. typically needs more iterations and smaller step sizes to produce comparable results as the implicit method.</p>
+<img align="center" src="/images/gp/3/input.png" width="40%">
+<img align="center" src="/images/gp/3/ex.png" width="40%">
+<br><br>
+<p>Implicit Laplacian Smoothing. 
+    It needs very few iterations to produce a reasonable result.
+     The implicit method is stable with a relatively large step size.</p>
+    <img align="center" src="/images/gp/3/input.png" width="40%">
+    <img align="center" src="/images/gp/3/im.png" width="40%">
+<br><br>
+<p>Bilateral Laplacian Smoothing. Preserve the sharp edges better.</p>
+<img align="center" src="/images/gp/3/input.png" width="40%">
+<img align="center" src="/images/gp/3/bi.png" width="40%">
+
+<h3>4. Mesh Parameterization</h3>
+<p>Parameterize a mesh by minimizing different distortion measures with fixed or free boundaries. </p>
+<p> • Spring energy (uniform Laplacian)<br>
+    • Dirichlet/harmonic energy (cotangent Laplacian)<br>
+    • Least Squares Conformal Maps (LSCM)<br>
+    • As-Rigid-As-Possible (ARAP)</p>
+
+<p>Uniform (fixed boundary)</p>
+<img align="center" src="/images/gp/4/u1.png" width="40%">      
+<img align="center"  src="/images/gp/4/pu1.png" width="25%"> 
+<br><br>
+<p>Cotangent (fixed)</p>
+<img align="center" src="/images/gp/4/c1.png" width="40%">
+<img align="center"  src="/images/gp/4/pc1.png" width="25%">
+<br><br>
+
+<p>LSCM (fixed)</p> 
+<img align="center" src="/images/gp/4/lf1.png" width="40%">    
+<img align="center"  src="/images/gp/4/pl1.png" width="25%">
+<br><br>
+
+<p>ARAP (fixed) </p>
+<img align="center" src="/images/gp/4/af1.png" width="40%">
+<img align="center"  src="/images/gp/4/pa1.png" width="25%">
+<br><br>
+
+<p>LSCM (free boundary)</p> 
+<img align="center" src="/images/gp/4/lfree1.png" width="40%"> 
+<img align="center"  src="/images/gp/4/lfreep1.png" width="25%">
+<br><br>
+
+<p>ARAP (free)</p> 
+<img align="center" src="/images/gp/4/afree1.png" width="40%">
+<img align="center"  src="/images/gp/4/afreep1.png" width="25%">
+
+<h3>5. Shape Deformation</h3>
+<p>Multi-resolution mesh editing. The algorithm is as follows:</p>
+<p> • Selecte the handles <br>
+    • Remove high-frequency details
+</p>
+<p>Original mesh -> smoothed mesh</p>
+<img align="center" src="/images/gp/5/20.png" width="40%">
+<img align="center"  src="/images/gp/5/21.png" width="40%">
+<br><br>
+<p> 
+    • Deform the smooth mesh<br>
+    • Transfer high-frequency details to the deformed surface
+</p>
+<p>Deformed smooth mesh -> deformed original mesh</p>
+<img align="center" src="/images/gp/5/23.png" width="40%">
+<img align="center"  src="/images/gp/5/22.png" width="40%">
+<br><br>
+
+<img align="center" src="/images/gp/5/30.png" width="40%">
+<img align="center"  src="/images/gp/5/31.png" width="40%"> 
+<br>
+<img align="center" src="/images/gp/5/32.png" width="40%">
+<img align="center"  src="/images/gp/5/33.png" width="40%">
+
+<h3>6. Skinning & Skeletal Animation</h3>
+<p>
+We apply skeletal deformation with<br>
+• Per-vertex Linear Blending Skinning (LBS)<br>
+• Dual Quaternion Skinning (DQS)<br>
+• Per-face Linear Blending Skinning with Poisson stitching<br>
+• Context-aware skeletal deformation, where multiple example poses are provided to improve the
+deformation
+</p>
+<br><br>
+<img align="center"  src="/images/gp/6/1.gif" width="100%">
+
+<h2 id="asl">Accelerate Marching Cubes</h2>
+<h2 id="pbs">Simulate Sand as Fluids</h2>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,92 @@
+---
+title: "Simulate Chemistry and Physics Experiment in VR/AR"
+excerpt: "This is a summary of the projects I worked on in Digital ART Lab of Shanghai Jiao Tong University.
+<br><br>
+<img src='/images/dalab/b3.png' style='max-width: 300px; height: 180px;'>
+<img src='/images/dalab/c2.png' style='max-width: 300px; height: 180px;'>
+<img src='/images/dalab/b3.png' style='max-width: 300px; height: 180px;'>
+"
+collection: portfolio
+---
+
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <title>Computer Graphics - Project report</title> -->
+
+    <!-- <link href="/resources/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- <link href="/resources/offcanvas.css" rel="stylesheet"> -->
+    <!-- <link href="/resources/custom2014.css" rel="stylesheet"> -->
+    <link href="/resources/twentytwenty.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+
+<body>
+<div class="container contentWrapper">
+<div class="pageContent">
+<h2>Real-time simulation of violent boiling in concentrated sulfuric acid dilution</h2>
+
+<img src="/images/boiling.png" alt="Mine" class="img-responsive">
+<h3><a href="http://dalab.se.sjtu.edu.cn/www/home/?page_id=6528">Watch the video</a></h3>
+<p>
+This project simulated the violent boiling phenomenon in real time. We integrated particle-based fluid solvers into an interactive VR application about concentrated sulfuric acid dilution experiment. Introduced the anti-viscosity method to inject momentum into high-temperature particles and capture the chaotic dynamics in the boiling process with small computational overhead.<br> I was in charge of the rendering. The fluids are rendered using Screen Space Fluids Rendering. The fluid rendering is accelerated with Compute Shaders. Integrated anisotropic kernels for better surface reconstruction.</p>
+<img src="/images/dalab/b0.png" alt="Mine" width="70%">
+<img src="/images/dalab/b1.png" alt="Mine" width="70%">
+<img src="/images/dalab/b3.png" alt="Mine" width="70%">
+
+<h3>Publication</h3>
+<p><b>CGI 2021 "Best Interdisciplinary Paper Award":</b> Wentao Chen, Tian Sang, <b>Yitian Ma</b>, Qian Chen, Yuwei Xiao, Zhigeng Pan, and Xubo Yang. The Visual Computer 37.9 (2021): 2631-2642.
+  <a href="https://doi.org/10.1007/s00371-021-02208-0">https://doi.org/10.1007/s00371-021-02208-0</a></p>
+
+<h2>Real-Time Fluid Simulation with Atmospheric Pressure Using Weak Air Particles</h2>
+<p>This project presents a particle-based approach to simulate versatile liquid effects under atmospheric pressure in real time. We introduce weak air particles as a sparse sampling of air. The weak air particles can be used to efficiently track liquid surfaces under atmospheric pressure. The method can be used to simualte interesting phenomenon such as Torricelli's Law experiment and trapped air bubbles. <br> I took part in the developing the particle-based solvers/ simulation demo applications and took charge of the rendering.</p>
+<img src="/images/dalab/c1.png" width="70%">
+<img src="/images/dalab/c2.png" width="70%">
+<img src="/images/dalab/c3.png" width="70%">
+
+<h3>Publication</h3>
+<p>Tian Sang, Wentao Chen, <b>Yitian Ma</b>, Hui Wang, and Xubo Yang. Computer Graphics International Conference. Springer, Cham, 2021: 151-164.</p>
+
+
+<h2>Simulate the chemical reaction between solid and liquid material</h2>
+<p>In this project, with the Unified Particle framework, we simulate some phenonmenon that will occur during the chemical reaction between solid and liquid material,
+e.g. matel and acid.
+The main features are as follows:</p>
+<p>Fluid-liquid coupling</p>
+<img src="/images/dalab/p1.png" width="80%">
+<br><br>
+<p>Concentration diffusion.</p>
+<img src="/images/dalab/p4.png" width="80%">
+<br><br>
+<p>Bubbles generated during reaction</p>
+<img src="/images/dalab/p3.png" width="80%">
+<br><br>
+
+<h2>Develop AR applications for K-12 education</h2>
+</div>
+</div>
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- <script src="/resources/jquery-1.12.4.min.js"></script> -->
+<script src="/resources/bootstrap.min.js"></script>
+<script src="/resources/jquery.event.move.js"></script>
+<script src="/resources/jquery.twentytwenty.js"></script>
+
+
+<script>
+$(window).load(function(){$(".twentytwenty-container").twentytwenty({default_offset_pct: 0.5});});
+</script>
+
+</body>
+</html>

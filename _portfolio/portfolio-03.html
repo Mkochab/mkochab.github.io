@@ -1,5 +1,5 @@
 ---
-title: "Selected Past Course Projects"
+title: "Selected Course Projects"
 excerpt: "Some of course projects in ETH, covering geometry processing, performance study, physically-based simulation etc.
 <br/>
 <img src='/images/gp/tn.png' style='width: 300px; height: 450px;'>
@@ -27,13 +27,21 @@ collection: portfolio
 </head>
 
 <h2>Category</h2>
-<h3><a href="#gp">Geometry Processing</a></h3>
+<h3><a href="#geometry">Geometry Processing</a></h3>
+<h3><a href="#asl">Accelerate Marching Cubes</a></h3>
 <h3><a href="#pbs">Simulate Sand as Fluids</a></h3>
 
-<h2 id="#gp">Geometry Processing</h2>
+<ul class="mul">
+    <li class="mli"><a href="#geometry">Geometry Processing</a></li>
+    <li class="mli"><a href="#asl">Accelerate Marching Cubes</a></li>
+    <li class="mli"><a href="#pbs">Simulate Sand as Fluids</a></li>
+</ul>
+
+
+<h2 id="geometry">Geometry Processing</h2>
 
 <h3>1. Mesh Subdivision</h3>
-<p>Implemented Sqrt(3) mesh subdivision scheme</p>
+<p class="jp">Implemented Sqrt(3) mesh subdivision scheme</p>
 <img align="center"  src="/images/gp/1/plane0.png" width="30%">
 <img align="center"  src="/images/gp/1/plane1.png" width="30%">
 <br>
@@ -44,81 +52,81 @@ collection: portfolio
 <img align="center"  src="/images/gp/1/bump1.png" width="30%"> 
 
 <h3>2. Implicit Surface Reconstruction</h3>
-<p>Compute an implicit function using Moving Least Square (MLS) approximating a 3D point cloud with given normals. 
+<p class="jp">Compute an implicit function using Moving Least Square (MLS) approximating a 3D point cloud with given normals. 
 Sample the implicit function on a 3D volumetric grid and then apply the marching cubes algorithm to extract a triangle mesh of this zero level set.</p>
 <img align="center" src="/images/gp/2/cat2.png" width="30%">
 <img align="center" src="/images/gp/2/cat21.png" width="30%">
 <img align="center" src="/images/gp/2/cat.png" width="30%">
 
-<p>We can tune different parameters to get a better reconstruction, e.g. grid resolution,
+<p class="jp">We can tune different parameters to get a better reconstruction, e.g. grid resolution,
 the polynomial degree of fitting, the weighting function used in MLS. </p>
 <img align="center" src="/images/gp/2/horse.png" width="60%">
 <img align="center" src="/images/gp/2/hound.png" width="60%">
 
 <h3>3. Mesh Smoothing</h3>
-<p>Explicit Laplacian Smoothing. typically needs more iterations and smaller step sizes to produce comparable results as the implicit method.</p>
+<p class="jp">Explicit Laplacian Smoothing. typically needs more iterations and smaller step sizes to produce comparable results as the implicit method.</p>
 <img align="center" src="/images/gp/3/input.png" width="40%">
 <img align="center" src="/images/gp/3/ex.png" width="40%">
 <br><br>
-<p>Implicit Laplacian Smoothing. 
+<p class="jp">Implicit Laplacian Smoothing. 
     It needs very few iterations to produce a reasonable result.
      The implicit method is stable with a relatively large step size.</p>
     <img align="center" src="/images/gp/3/input.png" width="40%">
     <img align="center" src="/images/gp/3/im.png" width="40%">
 <br><br>
-<p>Bilateral Laplacian Smoothing. Preserve the sharp edges better.</p>
+<p class="jp">Bilateral Laplacian Smoothing. Preserve the sharp edges better.</p>
 <img align="center" src="/images/gp/3/input.png" width="40%">
 <img align="center" src="/images/gp/3/bi.png" width="40%">
 
 <h3>4. Mesh Parameterization</h3>
-<p>Parameterize a mesh by minimizing different distortion measures with fixed or free boundaries. </p>
-<p> • Spring energy (uniform Laplacian)<br>
+<p class="jp">Parameterize a mesh by minimizing different distortion measures with fixed or free boundaries. </p>
+<p class="jp"> • Spring energy (uniform Laplacian)<br>
     • Dirichlet/harmonic energy (cotangent Laplacian)<br>
     • Least Squares Conformal Maps (LSCM)<br>
     • As-Rigid-As-Possible (ARAP)</p>
 
-<p>Uniform (fixed boundary)</p>
+<p class="jp">Uniform (fixed boundary)</p>
 <img align="center" src="/images/gp/4/u1.png" width="40%">      
 <img align="center"  src="/images/gp/4/pu1.png" width="25%"> 
 <br><br>
-<p>Cotangent (fixed)</p>
+<p class="jp">Cotangent (fixed)</p>
 <img align="center" src="/images/gp/4/c1.png" width="40%">
 <img align="center"  src="/images/gp/4/pc1.png" width="25%">
 <br><br>
 
-<p>LSCM (fixed)</p> 
+<p class="jp">LSCM (fixed)</p> 
 <img align="center" src="/images/gp/4/lf1.png" width="40%">    
 <img align="center"  src="/images/gp/4/pl1.png" width="25%">
 <br><br>
 
-<p>ARAP (fixed) </p>
+<p class="jp">ARAP (fixed) </p>
 <img align="center" src="/images/gp/4/af1.png" width="40%">
 <img align="center"  src="/images/gp/4/pa1.png" width="25%">
 <br><br>
 
-<p>LSCM (free boundary)</p> 
+<p class="jp">LSCM (free boundary)</p> 
 <img align="center" src="/images/gp/4/lfree1.png" width="40%"> 
 <img align="center"  src="/images/gp/4/lfreep1.png" width="25%">
 <br><br>
 
-<p>ARAP (free)</p> 
+<p class="jp">ARAP (free)</p> 
 <img align="center" src="/images/gp/4/afree1.png" width="40%">
 <img align="center"  src="/images/gp/4/afreep1.png" width="25%">
 
 <h3>5. Shape Deformation</h3>
-<p>Multi-resolution mesh editing. The algorithm is as follows:</p>
-<p> • Selecte the handles <br>
+<p class="jp">Multi-resolution mesh editing. The algorithm is as follows:</p>
+<p class="jp"> • Selecte the handles <br>
     • Remove high-frequency details
 </p>
-<p>Original mesh -> smoothed mesh</p>
+<p class="jp">Original mesh -> smoothed mesh</p>
 <img align="center" src="/images/gp/5/20.png" width="40%">
 <img align="center"  src="/images/gp/5/21.png" width="40%">
 <br><br>
-<p> 
+<p class="jp"> 
     • Deform the smooth mesh<br>
     • Transfer high-frequency details to the deformed surface
 </p>
-<p>Deformed smooth mesh -> deformed original mesh</p>
+<p class="jp">Deformed smooth mesh -> deformed original mesh</p>
 <img align="center" src="/images/gp/5/23.png" width="40%">
 <img align="center"  src="/images/gp/5/22.png" width="40%">
 <br><br>
@@ -130,7 +138,7 @@ the polynomial degree of fitting, the weighting function used in MLS. </p>
 <img align="center"  src="/images/gp/5/33.png" width="40%">
 
 <h3>6. Skinning & Skeletal Animation</h3>
-<p>
+<p class="jp">
 We apply skeletal deformation with<br>
 • Per-vertex Linear Blending Skinning (LBS)<br>
 • Dual Quaternion Skinning (DQS)<br>
@@ -138,11 +146,141 @@ We apply skeletal deformation with<br>
 • Context-aware skeletal deformation, where multiple example poses are provided to improve the
 deformation
 </p>
-<br><br>
 <img align="center"  src="/images/gp/6/1.gif" width="100%">
+<br><br><br>
 
 <h2 id="asl">Accelerate Marching Cubes</h2>
+<p class="jp">This project studies the single-core performance optimization of Marching Cubes (MC) algorithm.
+    Given a scalar field with values discretely evaluated on a 3D grid, and
+    a certain threshold value, the MC algorithm reconstructs the threshold isosurface as a triangle mesh.
+    The original algorithm marches in a cube-by-cube fashion within the grid. The process can be divided into 
+    three stages: threshold comparison, vertex interpolation, and triangle assembling.
+</p>
+<img align="center"  src="/images/asl/algo.png" width="60%">
+
+<!-- <p class="jp">The first stage, <b>threshold comparison</b> or <b>thresCmp</b> in
+    short, compares the values of each of the 8 grid points with
+    the given threshold, and uses the comparison result to
+    produce a <i>cubeIndex</i>. <i>cubeIndex</i> is a 8-bit integer,
+    with each bit encoding whether the corresponding grid point
+    has a larger value than the threshold. Thus, there are 256 possible cases
+    for a cube.</p> -->
+
+<h3>Optimization</h3>
+<p class="jp">We present an optimized implementation of the MC algorithm that marches
+level-by-level on the grid. It utilizes the feature of the grid structure to store, reuse, and share intermediate results in order to avoid redundant computation and allow for more memory locality. <br>
+</p>
+
+<p class="jp">Here is an illustration of the level-by-level optimization.
+The current level of cubes contact with its two neighbors on two planes. When iterating over the current level, most cubes only need to 
+do the vertex interpolation on 3 edges (colored with colors corresponding to the axes). Threshold
+comparison and vertex interpolation (on YZ edges) results are only written on the new plane, while the results on the
+old plane is inherited from previous level. Two ping-pong buffers are used, each one serves for a plane and alternate
+for odd and even levels. By marching through all the levels we could process all cubes without any redundancy.</p>
+<img align="center"  src="/images/asl/level.png" width="70%">
+
+<p class="jp">During the implementation of level-by-level method, we also need to make some important optimization decisions.
+    The first one is to use the format of indexed mesh as the output which is more compact. Each interpolated vertex position will be stored exactly
+    once, and each triangle is identified by 3 indices.
+    The second critical change is to replace the most costly branches needed during
+    triangle assembling stage with arithmetic operations and look-up tables.</p>
+
+<p class="jp">On the basis of the level-by-level method, we can integrate the SIMD vectorization into it.
+    AVX2 intrinsics to vectorize the comparison of grid point values and the threshold, the determination of 
+    cube topology and the interpolation of new edge vertices.
+</p>
+<p class="jp">Vectorization of threshold comparison</p>
+<img align="center"  src="/images/asl/v1.png" width="65%">
+<p class="jp">Determine cube topology based on the grid points' threshold comparison state. 
+    Here grid point at position (1, 0, 0) is
+    used as example. We repeat this for all 8 cube vertex positions.</p>
+<img align="center"  src="/images/asl/v2.png" width="65%">
+<p class="jp">During vertex interpolation, not every edge intersects with the isosurface
+    and thus needs interpolation. Therefore, we need to first
+    determine which edges are actually intersecting the isosurface. 
+    To this end, We use a two-pass method. We categorize
+    the edges into three different types based on which direction
+    they are in, namely the direction of X, Y or Z axis. In the
+    first pass, for each of the three directions, we generate a data
+    structure telling which of the edges require interpolation, which is similar to the Compressed Sparse Rows (CSR) representation.
+In the second pass, we conduct the following two steps.</p>
+<p class="jp">1. Gather start and end vertices values for vertex interpolation.</p>
+<img align="center"  src="/images/asl/v3.png" width="65%">
+<p class="jp">2. Vectorized calculation of edge intersection
+    coordinates. Use the edges along X-axis as an example.</p>
+<img align="center"  src="/images/asl/v4.png" width="65%">
+
+
+<h3>Results</h3>
+<p class="jp">Experiment results show that our optimization could achieve 2-3x speedup compared to the naive implementation. The optimization proposed is general and should be effective for
+    any resolution and specific values of the input data. The fixed cost of the algorithm
+    depends on the number of cubes, while the variable cost depends on the number of triangles generated. Thus, we also
+    plot the “fill rate” in the figure (value on right axis), which
+    is defined as the ratio of the number of triangles to the number of cubes (resolution cubed).</p>
+
+<p class="jp">Performance plot for a random scalar field generated
+    using Perlin Noise as input. It is continuous but changes
+    quickly due to the high frequency, thus the isosurface intersects with many cubes.</p>
+<img align="center"  src="/images/asl/noise.png" width="70%">
+<br><br>
+<p class="jp">Performance plot a SDF field to a sphere as input. This is a sparse example and most cubes are empty.</p>
+<img align="center"  src="/images/asl/sphere.png" width="70%">
+
+<p class="jp">Roofline analysis. We can see the improvement on operational 
+    intensity compared to the baseline. This is mainly because the
+    level-by-level strategy reduces memory access of the redundant computation. The vectorization mainly happens in the
+first stage, and its performance gain could be clearly spotted in the plot.
+</p>
+<img align="center"  src="/images/asl/roofline.png" width="70%">
+
+<p class="jp">The first bottleneck lies in the vertex interpolation stage. We need to decide which
+edges are intersecting with the isosurface using “if” statements, increase a global counter of vertex indices which is
+strictly order-dependent and then store it to the corresponding intermediate array. 
+The “if” branches cannot be predicted, and ILP is difficult to increase with loop unrolling
+because of the global counter. 
+The cost of actual interpolation is trivial compared to the overhead of branches and
+the computing and storing of the vertex indices. <br>
+The second bottleneck is in triangle assembling, where a triple level loop over the YZ axis and then over triangle table entries runs slowly. 
+The access pattern is not consecutive in memory and can't benefit from vectorization. As the roofline
+plot shows, we think this bottleneck is the memory.
+
+<h3>Conclusion</h3>
+<p class="jp">Our optimized implementation of the MC algorithm is settled on two pillars: reorganizing the structure of the computation, and using SIMD intrinsics to integrate vectorization.
+    The proposed optimizations produce 2-3x performance gain.
+    The strategies are general, could be used for any data and
+    input sizes, and are possible to be integrated with other optimization techniques, such as multi-processor parallelism
+    and spatial data structure based methods. In the future, we
+    would like to explore the potential ways for further optimizing the current bottlenecks of our implementation, e.g.,
+    ways to increase ILP and branching efficiency in the second
+    stage and improve memory access in the third stage.</p>
+
+<br><br><br>
+
 <h2 id="pbs">Simulate Sand as Fluids</h2>
+
+<p class="jp">In this project we implement three classic hybrid fluid simualtion methods: 
+Particle-in-Cell (PIC), Fluid-Implicit-Particle (FLIP), Affine Particle-In-Cell (APIC). These methods are 
+called hybird as they combine the grid-based pressure solving and particle-based advection. 
+Then based on <a href="https://www.cs.ubc.ca/~rbridson/docs/zhu-siggraph05-sandfluid.pdf">this paper</a> (which is also the paper introduces PIC),
+we implement the animation of sand based on the simulation of fluids.<br>
+For sand simulation, first we need to evaluate strain rate tensors in grid cells, 
+which is then used to calculate and determine whether the sand cell will flow or move as rigid bodies 
+based on the Mohr-Coulomb yield condition. Then separately simulate rigid body groups using rigid body motions, 
+and flowing sand motions. 
+Finally the friction condition between sand and boundaries is enforced.</p>
+<p class="jp">
+The implementation is written in <a href="https://www.taichi-lang.org/">Taichi</a>,
+a high-performance parallel language wrapped in python. This is an open-source project and has received
+50+ stars.</p>
+
+<h3><a href="https://github.com/ethz-pbs21/SandyFluid">Github Page</a></h3>
+
+<h3>Rendered results</h3>
+<p>APIC fluids</p>
+<img align="center"  src="/images/pbs/fluids.png" width="70%">
+<br><br>
+<p>APIC sand</p>
+<img align="center"  src="/images/pbs/sand.png" width="70%">
 
 
 

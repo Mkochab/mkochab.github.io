@@ -1,33 +1,73 @@
 ---
 title: "Real-time volumetric clouds generation and rendering"
 excerpt: "The projects investigates the methods of the generation and 
-rendering of volumetric clouds. <br><br><img src='/images/cloud/em1.png' style='max-width: 300px; height: 180px;'>
+rendering of volumetric clouds. <img src='/images/cloud/em1.png' style='max-width: 300px; height: 180px;'>
 <img src='/images/cloud/em2.png' style='max-width: 300px; height: 180px;'>
 <img src='/images/cloud/em3.png' style='max-width: 300px; height: 180px;'>"
 collection: portfolio
 ---
+<head>
+    <link href="/resources/twentytwenty.css" rel="stylesheet" type="text/css">
+</head>
+<ul class="mul">
+    <li class="mli"><a href="#physics">Cloud Generation</a></li>
+    <li class="mli"><a href="#rendering">Cloud Rendering</a></li>
+</ul>
 
-<h2>Cloud generation</h2>
-<h3>Procedurally generated clouds</h3>
+<h2 id="physics">Cloud generation</h2>
+<!-- <h3>Procedurally generated clouds</h3>
 <p>A common method of cloud generation is introduced in <a href="#references">[1]</a> used in Horizon: Zero Dawn  
-    The cloud is procedurally generated using noise.
-</p>
+    The cloud is procedurally generated using 3D Perlin-Voronoi noise. There is also a height gradient for different
+    types of clouds and the cloud coverage information from the weather system.
+</p> -->
 
 <h3>Physically-base generation</h3>
-The real-time generation of clouds is based on several theoritical models: atmospheric model, fluid dynamics, and the water transition model of the clouds.
-. The implementation is mainly based on <a href="#references">[2]</a> and also adopt a few details from <a href="#references">[3]</a>.
-We can generate the clouds based on the input of heat and vapor emission, a set of control parameters, as well as the terrain information.
-<link href="/resources/twentytwenty.css" rel="stylesheet" type="text/css">
+<p>The real-time generation of clouds is based on several theoritical physics and meteorologic models: atmospheric model, thermodynamics, fluid dynamics, and the water continuity model of the clouds.
+The implementation is mainly based on <a href="#references">[2]</a> and also adopt a few details from <a href="#references">[3]</a>.
+We can generate the clouds based on the input of heat and vapor emission and a set of control parameters. 
+We can also incorporate the terrain information and real weather information. The implementation on compute shader can 
+achieve real-time performance. The simualtion usually needs to slow down. This allows us to divide the computation into several stages and distribute the whole process into many frames which 
+further improves the performance.</p>
 
-<h2>Cloud rendering</h2>
+<h3>Different Emission Maps</h3>
+
+<img src="/images/cloud/em1.png"  width="60%">
+<img src="/images/cloud/ep1.png"  width="20%">
+<br>
+<img src="/images/cloud/em2.png"  width="60%">
+<img src="/images/cloud/ep2.png"  width="20%">
+<br>
+<img src="/images/cloud/em3.png"  width="60%">
+<img src="/images/cloud/ep3.png"  width="20%">
+
+<h3>Wind</h3>
+<p>Since the clouds are physically simulated, we can apply wind force to them.</p>
+
+<img src="/images/cloud/wind1.png"  width="70%">
+<img src="/images/cloud/wind0.png"  width="70%">
+<img src="/images/cloud/wind2.png"  width="70%">
+
+
+<h2 id = "rendering">Cloud rendering</h2>
+<p>Volumetric clouds is rendered with ray-marching method. <a href="#reference">[1]</a> mentions a few 
+techniques for performance optimization, such as checkerboard updating and dynamic marching step sizes.
+Another possible optimization is to use a low-resolution cloud texture and later synthesize it with the scene.</p>
+<h3>Different types of clouds</h3>
+<img src="/images/cloud/fog1.png"  width="70%">
+<img src="/images/cloud/s1.png"  width="70%">
+<img src="/images/cloud/sc1.png"  width="70%">
+<img src="/images/cloud/c1.png"  width="70%">
+<img src="/images/cloud/cc2.png"  width="70%">
+
+
 <h3>Cloud Shadows</h3>
-    <img src="/images/cloud/shadow1.png"  width="80%">
-    <img src="/images/cloud/shadow2.png" width="80%">
+    <img src="/images/cloud/shadow1.png"  width="70%">
+    <img src="/images/cloud/shadow2.png" width="70%">
 <br>
 
 <h3>Gods Ray</h3>
-    <img src="/images/cloud/ray2.png" width="80%">
-    <img src="/images/cloud/ray1.png" width="80%">
+    <img src="/images/cloud/ray2.png" width="70%">
+    <img src="/images/cloud/ray1.png" width="70%">
 <br>
 
 

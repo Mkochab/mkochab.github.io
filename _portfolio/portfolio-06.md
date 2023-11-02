@@ -19,5 +19,4 @@ collection: portfolio
 <br><img src='/images/blender/rose1.png'>
 
 ## My first sculpture!
-<br><img src='/images/blender/555.png'>
 <br><img src='/images/blender/444.png'>
